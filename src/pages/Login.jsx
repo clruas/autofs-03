@@ -28,16 +28,18 @@ function Login() {
 
 	async function handleLogin(e){
 		e.preventDefault()
-		const isValid = validate(email, pass)
+		const isValid = validate(email, pass)		
 		if(isValid){
-			const { data, error } = await signIn(email, pass) //('clruas@gmail.com', '123')
+			const { data, error } = await signIn (email, pass)
+			//const { data, error } = await signIn('clruas@gmail.com', '1234')
 			if (!error) {
 				navigate('/')
 			}
 		}
+
 	}
 	return (
-		<div className="container mx-auto">
+		<div className="container mx-auto md:w-1/4">
 			<div className="w-4/5 mx-auto">
 				<h1 className="text-2xl text-center font-bold my-6">Login</h1>
 				<Input 
