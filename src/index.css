@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@supports (-webkit-touch-callout: none) {
+    .h-screen {
+        height: -webkit-fill-available;
+    }
+}
+
+* {
+    outline: none;
+}
+
+body {
+    @apply h-screen
+}
+
+.active {
+    @apply bg-sky-500 text-white
+}
