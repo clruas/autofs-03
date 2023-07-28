@@ -20,6 +20,13 @@ function Message({ state }){
 }
 
 function Login() {
+	return (
+		<div>
+			<h1>Login</h1>
+			<Link to="/">Voltar para o Home</Link>
+		</div>
+	)
+	/*
 	const { signIn, state } = useSession()
 	const navigate = useNavigate()
 	const [email, setEmail] = useState(localStorage.getItem('email'))
@@ -66,6 +73,7 @@ function Login() {
 			</div>
 		</div>
 	)
+	*/
 }
 
 export default Login

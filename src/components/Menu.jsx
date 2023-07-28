@@ -3,6 +3,7 @@ import { TbAlbum, TbBook2, TbCar, TbCoin, TbCurrencyReal, TbHome, TbLogout, TbMo
 import { useRecoilState } from 'recoil'
 import { UserState } from '../services/store'
 import useSession from '../hooks/useSession'
+import useAuth from '../hooks/useAuth'
 
 function MenuItem({ label, element: Component, children, ...rest }){
     const props = {
@@ -15,14 +16,17 @@ function MenuItem({ label, element: Component, children, ...rest }){
 }
 
 function Menu() {
-    const [user, setUser] = useRecoilState(UserState)
-    const { signOut } = useSession()
+    //const [user, setUser] = useRecoilState(UserState)
+    const { user, signOut } = useAuth()
+
     async function handleSair(){
         await signOut()
     }
+
     return (
         <nav className='grid grid-flow-col md:flex md:flex-col md:px-4'>
             <MenuItem to='/' label='Home' element={TbHome} />
+            <MenuItem to='/instrutores' label='Instrutores' element={TbAlbum} />
             {user.tipo == "admin" && <MenuItem to='/instrutores' label='Instrutores' element={TbAlbum} />}
             {user.tipo == "admin" && <MenuItem to='/alunos' label='Alunos' element={TbSchool} />}
             {user.tipo == "admin" && <MenuItem to='/aulas' label='Aulas' element={TbBook2} />}

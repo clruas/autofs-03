@@ -9,13 +9,16 @@ import useSession from "../hooks/useSession"
 function PrivateRoute() {
 	//const [session, setSession] = useRecoilState(SessionState)
 	//const [user, setUser] = useRecoilState(UserState)
-	const { user, state, getSession } = useSession()
+
+	//const { user, state, getSession } = useSession()
+	const { user, getSession } = useSession()
+
 	const navigate = useNavigate()
 	function init(){
-		console.log(state)
+		//console.log(state)
 		async function validateSession(){
 			await getSession()
-			console.log('AQUI', user)
+
 			/*
 			const { data, error} = await supabase.auth.getSession()
 			if(error){
@@ -37,7 +40,12 @@ function PrivateRoute() {
 	useEffect(init, [])
 	return (
 		//Object.keys(session).length > 0 ? <Page /> : <Navigate to='/login' />
-		<div className="text-4xl">Private route</div>
+		
+		Object.keys(user).length > 0 ? <Page /> :  "vai para o login" //<Navigate to='/login' />
+
+		// <div className="text-4xl">
+		// 	{user ? 'Tem user' : 'Nao tem user'}
+		// </div>
 	)
 }
 
